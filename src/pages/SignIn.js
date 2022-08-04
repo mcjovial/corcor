@@ -4,8 +4,52 @@ import { useNavigate, Link } from "react-router-dom";
 import BaseInput from "../components/base-components/BaseInput";
 import BaseButton from "../components/base-components/BaseButton";
 import Slider from "../components/base-components/Swiper";
+import { useState } from "react";
+import { loginUser } from "../store/actions/authActions";
+import { useDispatch } from "react-redux";
+
 const SignIn = () => {
   let navigateTo = useNavigate();
+  const [userData, setUserData] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState({ value: "" });
+
+  let dispatch = useDispatch
+  // console.log("auth", localStorage.getItem("isAuthenticated"));
+
+
+  const handleInputChange = (e) => {
+    setUserData((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+
+    console.log(userData);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    loginUser(userData)
+    .then((res) => {
+      dispatch({
+        type: "LOGGED_IN_USER",
+        payload: {
+          name: res.data.user.name,
+          email: res.data.user.email,
+          token: res.data.token,
+        },
+      });
+      if (res.data) {
+        localStorage.setItem('user', JSON.stringify(res.data))
+        localStorage.setItem('isAuthenticated', 'true')
+      }
+      navigateTo('/dashboard/business-kyc')
+    })
+    .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <div className="z-50 fixed left-0 right-0 top-0 px-6 py-4 bg-white flex items-center shadow-sm">
@@ -36,11 +80,15 @@ const SignIn = () => {
                 inputPlaceholder="Enter your email"
                 inputType="email"
                 inputStyle="mb-10 lg:mb-5"
+                name="email"
+                onChange={(e) => handleInputChange(e)}
               ></BaseInput>
               <BaseInput
                 inputPlaceholder="Enter your password"
                 inputType="password"
                 inputStyle="mb-5"
+                name="password"
+                onChange={(e) => handleInputChange(e)}
               ></BaseInput>
 
               <Link
@@ -54,6 +102,7 @@ const SignIn = () => {
                 <BaseButton
                   customText="Sign In Individual"
                   customStyle="mb-5"
+                  onClick={handleSubmit}
                 ></BaseButton>
               </Link>
 

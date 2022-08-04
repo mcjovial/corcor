@@ -1,12 +1,15 @@
 import back from "../assets/back.png";
 import logo from "../assets/auth/logo.png";
 import signInTwo from "../assets/auth/forgot-password.png";
-
 import { useNavigate, Link } from "react-router-dom";
 import BaseInput from "../components/base-components/BaseInput";
 import BaseButton from "../components/base-components/BaseButton";
+
+
 const ForgotPassword = () => {
   let navigateTo = useNavigate();
+
+  
   return (
     <div>
       <div className="fixed top-0 left-0 right-0 flex items-center px-6 py-4 bg-white shadow-sm">

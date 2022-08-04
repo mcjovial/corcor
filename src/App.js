@@ -10,6 +10,7 @@ import Success from "./pages/Success";
 import IndividualSignup from "./pages/IndividualSignup";
 import ResetSuccess from "./pages/ResetPwdSuccess";
 import BusinessKYC from "./pages/BusinessKYC";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -25,7 +26,10 @@ function App() {
           <Route path="verify" element={<Verify />} />
           <Route path="successful" element={<Success />} />
           <Route path="reset-success" element={<ResetSuccess />} />
-          <Route path="business-kyc/*" element={<BusinessKYC />} />
+          <Route path="/dashboard" element={<ProtectedRoute />}>
+            <Route path="business-kyc/*" element={<BusinessKYC />} />
+          </Route>
+
         </Routes>
       </BrowserRouter>
     </div>
