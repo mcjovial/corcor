@@ -1,0 +1,37 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;800;900&display=swap);
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+
+
+.stage-1-to-2 {
+  animation-name: mid-progress;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes mid-progress {
+  from{width: 25%;}
+  to{width: 55%;}
+}
+
+.stage-2-to-3 {
+  animation-name: full-progress;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes full-progress {
+  from{width: 55%;}
+  to{width: 100%;}
+}
+
+
+:root {
+  --masto-green-10: #94C146;
+  --masto-blue-10: #1F4971;
+}

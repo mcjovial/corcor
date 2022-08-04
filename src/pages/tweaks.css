@@ -1,0 +1,42 @@
+/* tweaks for success page */
+
+.success-wrapper, .verify-wrapper {
+    min-height: 90vh;
+}
+
+.carousel .thumb {
+    transition: border .15s ease-in;
+    display: none !important;
+    margin-right: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    border: 3px solid #fff;
+    padding: 2px;
+}
+.carousel .carousel-status {
+    position: relative;
+    display: none;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    font-size: 10px;
+    text-shadow: 1px 1px 1pxrgba(0,0,0,0.9);
+    color: #fff;
+}
+
+.carousel .control-dots .dot {
+    transition: opacity .25s ease-in;
+    opacity: .3;
+    filter: alpha(opacity=30);
+    background: #1f4971;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.slider-img {
+    width: 100% !important;
+}

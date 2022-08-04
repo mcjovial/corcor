@@ -1,0 +1,17 @@
+.indi-form {
+    width: 50% !important;
+}
+.indi-form input, .indi-form select {
+    width: 400px !important;
+}
+
+@media screen and (max-width: 768px) {
+
+    .indi-form input, .indi-form select {
+        width: 300px !important;
+    }
+    .indi-form {
+        width: 90% !important;
+    }
+
+}
